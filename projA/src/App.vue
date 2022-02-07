@@ -17,6 +17,9 @@
       ></friend-contact>
     </ul>
   </section>
+  <section>
+    <new-friend @addFriend="handleAddFriend" />
+  </section>
 </template>
 
 <script>
@@ -45,6 +48,15 @@ export default {
     toggleFavoriteStatus(friendId) {
       const friend = this.friends.find((friend) => friend.id === friendId);
       friend.isFavorite = !friend.isFavorite;
+    },
+    handleAddFriend(obj) {
+      const { name, phone, email } = obj;
+      this.friends.push({
+        id: name.split(" ")[0],
+        name: name,
+        phone: phone,
+        email: email,
+      });
     },
   },
 };
@@ -83,7 +95,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
