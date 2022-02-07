@@ -4,6 +4,7 @@
       <h1>My Friends</h1>
     </header>
 
+    <new-friend @add-friend="handleAddFriend" />
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -14,11 +15,9 @@
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
         @toggle-favorite="toggleFavoriteStatus"
+        @delete="deleteFriend"
       ></friend-contact>
     </ul>
-  </section>
-  <section>
-    <new-friend @add-friend="handleAddFriend" />
   </section>
 </template>
 
@@ -57,6 +56,10 @@ export default {
         email: email,
         isFavorite: false,
       });
+    },
+    deleteFriend(friendId) {
+      console.log(friendId);
+      this.friends = this.friends.filter((friend) => friend.id !== friendId);
     },
   },
 };
