@@ -18,7 +18,7 @@
     </ul>
   </section>
   <section>
-    <new-friend @addFriend="handleAddFriend" />
+    <new-friend @add-friend="handleAddFriend" />
   </section>
 </template>
 
@@ -49,13 +49,13 @@ export default {
       const friend = this.friends.find((friend) => friend.id === friendId);
       friend.isFavorite = !friend.isFavorite;
     },
-    handleAddFriend(obj) {
-      const { name, phone, email } = obj;
+    handleAddFriend(name, phone, email) {
       this.friends.push({
-        id: name.split(" ")[0],
+        id: new Date().toISOString(),
         name: name,
         phone: phone,
         email: email,
+        isFavorite: false,
       });
     },
   },
@@ -128,5 +128,21 @@ header {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+#app input {
+  font: inherit;
+  padding: 0.15rem;
+}
+
+#app label {
+  font-weight: bold;
+  margin-right: 1rem;
+  widows: 7rem;
+  display: inline-block;
+}
+
+#app form div {
+  margin: 1rem 0;
 }
 </style>
