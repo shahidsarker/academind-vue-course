@@ -5,8 +5,10 @@
       :mode="storedResButtonMode"
       >Stored Resources</BaseButton
     >
-    <BaseButton @click="setSelectedTab('add-resource')"
-    :mode="addResButtonMode"
+    <BaseButton
+      @click="setSelectedTab('add-resource')"
+      :mode="addResButtonMode"
+      @add-reource="handleAddResource"
       >Add Resource</BaseButton
     >
   </BaseCard>
@@ -42,10 +44,20 @@ export default {
     setSelectedTab(tab) {
       this.selectedTab = tab;
     },
+    addResource(title, description, url) {
+      this.storedResources.unshift({
+        id: Date.toISOString(),
+        title: title,
+        description: description,
+        link: url,
+      });
+      this.selectedTab = 'stored-resources';
+    },
   },
   provide() {
     return {
       resources: this.storedResources,
+      addResource: this.addResource,
     };
   },
   computed: {
