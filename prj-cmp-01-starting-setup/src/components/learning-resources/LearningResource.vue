@@ -2,10 +2,8 @@
   <li>
     <BaseCard>
       <header>
-        <h3>
-          {{ title }}
-        </h3>
-        <BaseButton mode="flat">Delete</BaseButton>
+        <h3>{{ title }}</h3>
+        <BaseButton mode="flat" @click="deleteResource(id)">Delete</BaseButton>
       </header>
       <p>{{ description }}</p>
       <nav>
@@ -18,8 +16,9 @@
 <script>
 import BaseButton from '../UI/BaseButton.vue';
 export default {
-  props: ['title', 'description', 'link'],
+  props: ['id', 'title', 'description', 'link'],
   components: { BaseButton },
+  inject: ['deleteResource'],
 };
 </script>
 
