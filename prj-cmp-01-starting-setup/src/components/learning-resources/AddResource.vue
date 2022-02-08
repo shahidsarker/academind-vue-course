@@ -15,7 +15,7 @@
       </div>
       <div class="form-control">
         <label for="link">Link</label>
-        <input id="link" name="link" ref="linkInput" type="url" />
+        <input id="link" name="link" ref="linkInput" type="url" value="http://" />
       </div>
       <div>
         <BaseButton type="submit">Add Resource</BaseButton>
@@ -32,7 +32,8 @@ export default {
       const enteredTitle = this.$refs.titleInput.value;
       const enteredDescription = this.$refs.descInput.value;
       const enteredUrl = this.$refs.linkInput.value;
-      return this.addResource(enteredTitle, enteredDescription, enteredUrl);
+
+      this.addResource(enteredTitle, enteredDescription, enteredUrl);
     },
   },
 };
