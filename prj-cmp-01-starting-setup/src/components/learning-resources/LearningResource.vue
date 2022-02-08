@@ -5,7 +5,7 @@
         <h3>
           {{ title }}
         </h3>
-        <button>Delete</button>
+        <BaseButton text="Delete" />
       </header>
       <p>{{ description }}</p>
       <nav>
@@ -16,8 +16,10 @@
 </template>
 
 <script>
+import BaseButton from '../UI/BaseButton.vue';
 export default {
   props: ['title', 'description', 'link'],
+  components: { BaseButton },
 };
 </script>
 
