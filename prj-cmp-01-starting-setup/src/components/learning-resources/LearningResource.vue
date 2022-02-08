@@ -16,13 +16,8 @@
 </template>
 
 <script>
-import BaseCard from '../UI/BaseCard';
-
 export default {
   props: ['title', 'description', 'link'],
-  components: {
-    BaseCard,
-  },
 };
 </script>
 
