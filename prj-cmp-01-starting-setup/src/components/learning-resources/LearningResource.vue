@@ -5,7 +5,7 @@
         <h3>
           {{ title }}
         </h3>
-        <BaseButton text="Delete" />
+        <BaseButton mode="flat">Delete</BaseButton>
       </header>
       <p>{{ description }}</p>
       <nav>
