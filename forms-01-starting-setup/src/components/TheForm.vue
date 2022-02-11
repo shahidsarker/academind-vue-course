@@ -58,15 +58,15 @@
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" v-model="how" />
+        <input id="how-video" name="how" type="radio" value="video" v-model="how" />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" v-model="how" />
+        <input id="how-blogs" name="how" type="radio" value="blogs" v-model="how" />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" v-model="how" />
+        <input id="how-other" name="how" type="radio" value="other" v-model="how" />
         <label for="how-other">Other</label>
       </div>
     </div>
