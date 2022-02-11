@@ -99,6 +99,9 @@
       </div>
     </div>
     <div class="form-control">
+      <RatingControl />
+    </div>
+    <div class="form-control">
       <input
         type="checkbox"
         id="confirm-terms"
@@ -114,6 +117,7 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
 export default {
   data() {
     return {
@@ -129,26 +133,21 @@ export default {
   methods: {
     submitForm(e) {
       console.log(e);
-
       console.log('Username: ' + this.userName);
       this.userName = '';
-
       console.log('User Age:');
       console.log(this.userAge + 5);
       console.log(this.$refs.ageInput.value + 5);
       console.log(21);
       this.userAge = null;
-
       console.log('Referrer: ' + this.referrer);
       this.referrer = 'wom';
-
       console.log('Checkboxes');
       console.log(this.interest);
       console.log('Radio');
       console.log(this.how);
       this.interest = [];
       this.how = null;
-
       console.log('Confirm?');
       console.log(this.confirm);
       this.confirm = false;
@@ -161,6 +160,7 @@ export default {
       }
     },
   },
+  components: { RatingControl },
 };
 </script>
 
