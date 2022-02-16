@@ -50,6 +50,7 @@
 </template>
 
 <script>
+const API_URL = process.env.VUE_APP_API_URL;
 export default {
   data() {
     return {
@@ -58,7 +59,7 @@ export default {
       invalidInput: false,
     };
   },
-  emits: ['survey-submit'],
+  // emits: ['survey-submit'],
   methods: {
     submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
@@ -67,9 +68,19 @@ export default {
       }
       this.invalidInput = false;
 
-      this.$emit('survey-submit', {
-        userName: this.enteredName,
-        rating: this.chosenRating,
+      // this.$emit('survey-submit', {
+      //   userName: this.enteredName,
+      //   rating: this.chosenRating,
+      // });
+
+      // fetch(process.env.VUE_APP_API_URL).then((data) => console.log(data));
+      fetch(API_URL + 'surveys.json', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: this.enteredName,
+          rating: this.chosenRating,
+        }),
       });
 
       this.enteredName = '';
