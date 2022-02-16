@@ -9,7 +9,7 @@
       </div>
       <p v-if="isLoading">Loading...</p>
       <p v-else-if="!isLoading && error">{{ error }}</p>
-      <p v-else-if="!isLoading && (!result || results.length === 0)">
+      <p v-else-if="!isLoading && (!results || results.length === 0)">
         No stored experiences found. Start adding some survey responses.
       </p>
       <ul v-else>
@@ -44,8 +44,7 @@ export default {
     loadExperiences() {
       this.isLoading = true;
       this.error = null;
-      // fetch(API_URL + 'surveys.json', {})
-      fetch(API_URL, {})
+      fetch(API_URL + 'surveys.json', {})
         .then((response) => {
           if (response.ok) {
             return response.json();

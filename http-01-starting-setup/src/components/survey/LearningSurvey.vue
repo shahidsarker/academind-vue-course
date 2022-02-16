@@ -41,6 +41,7 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -57,6 +58,7 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   // emits: ['survey-submit'],
@@ -67,13 +69,8 @@ export default {
         return;
       }
       this.invalidInput = false;
-
-      // this.$emit('survey-submit', {
-      //   userName: this.enteredName,
-      //   rating: this.chosenRating,
-      // });
-
-      // fetch(process.env.VUE_APP_API_URL).then((data) => console.log(data));
+      this.error = null;
+      // fetch(API_URL + 'surveys.json', {
       fetch(API_URL + 'surveys.json', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -81,7 +78,18 @@ export default {
           name: this.enteredName,
           rating: this.chosenRating,
         }),
-      });
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log(response);
+          } else {
+            throw new Error('Could not save data!');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = err.message;
+        });
 
       this.enteredName = '';
       this.chosenRating = null;
