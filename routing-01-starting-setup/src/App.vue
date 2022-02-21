@@ -1,9 +1,11 @@
 <template>
   <the-navigation />
   <main>
-    <!-- <component :is="activePage"></component> -->
     <router-view />
   </main>
+  <footer>
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>
