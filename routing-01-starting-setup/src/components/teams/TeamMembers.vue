@@ -40,13 +40,18 @@ export default {
         const selectedUser = this.users.find((user) => user.id === member);
         selectedMembers.push(selectedUser);
       }
-      console.log(selectedTeam, members, selectedMembers);
       this.teamName = selectedTeam.name;
       this.members = selectedMembers;
     },
   },
   created() {
     this.loadTeamMembers(this.teamId);
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('TeamMembers beforeRouteUpdate');
+    console.log(to, from);
+    // this.loadTeamMembers(to.params.teamId);
+    next();
   },
   watch: {
     teamId(newId) {

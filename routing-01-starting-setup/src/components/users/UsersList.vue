@@ -18,12 +18,17 @@ export default {
     UserItem,
   },
   inject: ['users'],
-  methods:{
-    confirmInput(){
-      console.log('confirm')
-      this.$router.push('/teams')
-    }
-  }
+  methods: {
+    confirmInput() {
+      console.log('confirm');
+      this.$router.push('/teams');
+    },
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('UsersList beforeRouteEnter');
+    console.log(to, from);
+    next();
+  },
 };
 </script>
 

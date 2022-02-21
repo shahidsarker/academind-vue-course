@@ -26,7 +26,15 @@ const router = createRouter({
         },
       ],
     },
-    { path: '/users', components: { default: UsersList, footer: UsersFooter } },
+    {
+      path: '/users',
+      components: { default: UsersList, footer: UsersFooter },
+      beforeEnter(to, from, next) {
+        console.log('users beforeEnter');
+        console.log(to, from);
+        next();
+      },
+    },
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
@@ -40,6 +48,11 @@ router.beforeEach(function (to, from, next) {
   console.log('Global beforeEach');
   console.log(to, from);
   next();
+});
+
+router.afterEach(function (to, from) {
+  console.log('Global afterEach');
+  console.log(to, from);
 });
 
 const app = createApp(App);
