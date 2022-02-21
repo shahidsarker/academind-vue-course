@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     loadTeamMembers(teamId) {
-      // const teamId = route.params.teamId;
       const selectedTeam = this.teams.find((team) => team.id === teamId);
       if (!selectedTeam) {
         return;
